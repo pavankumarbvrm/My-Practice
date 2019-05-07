@@ -13,8 +13,7 @@ blocks:
       - name: HUGO install
         commands:
           - checkout
-          - "curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.53/hugo_0.53_Linux-64bit.tar.gz -o /tmp/hugo.tar.gz"
-          - "echo \"0e4424c90ce5c7a0c0f7ad24a558dd0c2f1500256023f6e3c0004f57a20ee119  /tmp/hugo.tar.gz\" | sha256sum -c"
-          - sudo mkdir -p /tmp/hugo
-          - sudo tar xf /tmp/hugo.tar.gz hugo -C /tmp/ && cp -r /tmp/hugo /usr/bin
+          - export VER="0.53"
+          - wget https://github.com/gohugoio/hugo/releases/download/v${VER}/hugo_${VER}_Linux-64bit.deb
+          - sudo dpkg -i hugo_${VER}_Linux-64bit.deb
           - "hugo --baseURL https://hugotest-ff31.kxcdn.com"
